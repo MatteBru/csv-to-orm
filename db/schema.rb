@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 1) do
     t.integer "num_pedestrians_killed"
     t.integer "num_cyclists_killed"
     t.integer "num_motorists_killed"
-    t.string "contributing_factors"
+    t.text "contributing_factors"
   end
 
 end

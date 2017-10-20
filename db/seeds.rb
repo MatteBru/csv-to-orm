@@ -29,7 +29,7 @@ csv.each do |row|
   t.num_pedestrians_killed = row['NUMBER OF PEDESTRIANS KILLED']
   t.num_cyclists_killed = row['NUMBER OF CYCLIST KILLED']
   t.num_motorists_killed = row['NUMBER OF MOTORIST KILLED']
-  t.contributing_factors = [row['CONTRIBUTING FACTOR VEHICLE 1'], row['CONTRIBUTING FACTOR VEHICLE 2'], row['CONTRIBUTING FACTOR VEHICLE 3'], row['CONTRIBUTING FACTOR VEHICLE 4'], row['CONTRIBUTING FACTOR VEHICLE 4'], row['CONTRIBUTING FACTOR VEHICLE 5']].select {|factor| factor != 'Unspecified' && factor != '' && factor != ' '}.uniq.join(", ")
+  t.contributing_factors = [row['CONTRIBUTING FACTOR VEHICLE 1'], row['CONTRIBUTING FACTOR VEHICLE 2'], row['CONTRIBUTING FACTOR VEHICLE 3'], row['CONTRIBUTING FACTOR VEHICLE 4'], row['CONTRIBUTING FACTOR VEHICLE 5']].select{|fact| fact}
   t.save
   puts "#{t.time} saved"
 end
