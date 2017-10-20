@@ -14,12 +14,7 @@ csv_text = File.read('lib/seeds/Deadly_Collisions.csv')
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
   t = Accident.new
-  d_a = row['DATE'].split("/")
-  dat = d_a.map{|el| el.rjust(2,'0')}
-  dat[0], dat[1] = dat[1], dat[0]
-  t_a = row['TIME'].split(":")
-  tim = t_a.map{|el| el.rjust(2,'0')} << "00"
-  t.time = DateTime.strptime("#{dat.reverse.join('/')} #{tim.join(":")}", "%Y/%m/%d %H:%M:%S")
+  t.time = DateTime.strptime("#{row['DATE']} #{row['TIME']}", "%m/%d/%Y %H:%M")
   t.borough = row['BOROUGH']
   t.zip_code = row['ZIP CODE']
   t.latitude = row['LATITUDE']
